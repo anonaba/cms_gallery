@@ -1,7 +1,6 @@
-<?php
+<?php 
 
 class User {
-
 	static private $db;
 
 	public $id;
@@ -14,7 +13,7 @@ class User {
 	static public function set_database($database) {
      self::$db = $database;
 	}
-
+	
 	// static public function find_this_query($sql) {return self::$db->query($sql);}
 
 	static public function find_this_query($sql) {
