@@ -1,7 +1,12 @@
 <?php 
+ob_start(); // turn on output buffering
 
+define("DB_SERVER", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("DB_NAME", "gallery_db");
 
-require_once 'config.php';
+require_once('functions.php');
 
 // -> All classes in directory
  foreach(glob('classes/*.php') as $file) {
