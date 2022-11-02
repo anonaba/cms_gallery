@@ -1,10 +1,7 @@
-
 <?php 
 
-
 class Database {
-   
-    protected $conn;
+	protected $conn;
 
 
     public function __construct() {
@@ -36,8 +33,4 @@ class Database {
     public function escape_string($string) {
         return $this->conn->escape_string($string);
     }
-
-
 }
-
-
