@@ -21,3 +21,5 @@ require_once('functions.php');
 
 $db = new Database;
 User::set_database($db);
+
+$session = new Session;

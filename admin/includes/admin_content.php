@@ -8,8 +8,8 @@
                             <small>Subheading</small>
                         </h1>
                         <?php 
-                        $user_found = User::find_all_user_by_id(5);
-                        echo $user_found->id;
+                        // $user_found = User::find_all_user_by_id(5);
+                        // echo $user_found->id;
                         //     echo '<pre>';
                         //  var_dump($user);
                         // echo '</pre>';

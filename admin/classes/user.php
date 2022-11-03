@@ -56,7 +56,20 @@ class User {
 		return array_key_exists($properties, $object_prop); 
 	}
 
+	// verify the user when login
+	static public function verify_user($user,$pass) {
+		
+		$username = self::$db->escape_string($user);
+		$password = self::$db->escape_string($pass);
 
+		$sql = "SELECT * FROM users ";
+		$sql .= "WHERE username = '${username}' ";
+		$sql .= "AND password = '${password}' LIMIT 1";
+
+		$the_result_array =  self::find_this_query($sql);
+
+		return !empty($the_result_array) ? array_shift($the_result_array) : false;
+	}
 
 	static public function find_all_users() {
 		return self::find_this_query('SELECT * FROM users');
