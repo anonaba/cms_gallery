@@ -1,6 +1,7 @@
 <?php 
 
 class Session {
+
 	private $signed_in = false;
 	public $user_id;
 
@@ -9,7 +10,7 @@ class Session {
 		$this->check_the_login();
 	}
 
-	// getter method
+	// // getter method
 	public function is_signed_in() {
 		return $this->signed_in;
 	}
@@ -22,7 +23,7 @@ class Session {
 	}
 	
 	public function logout() {
-		unset($_SESSION['user_id');
+		unset($_SESSION['user_id']);
 		unset($this->user_id);
 		$this->signed_in = false;
 	}

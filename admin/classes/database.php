@@ -31,6 +31,6 @@ class Database {
     }
 
     public function escape_string($string) {
-        return $this->conn->escape_string($string);
+        return $this->conn->real_escape_string($string);
     }
 }
