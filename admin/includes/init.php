@@ -6,6 +6,12 @@ define("DB_USER", "root");
 define("DB_PASS", "");
 define("DB_NAME", "gallery_db");
 
+
+// echo dirname(__FILE__) . '<br>';
+
+// echo dirname(__DIR__) . '<br>';
+
+
 require_once('functions.php');
 
 // -> All classes in directory
