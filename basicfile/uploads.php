@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 	<?php
 		if(!empty($upload_error_and_sucess_message)) {
-			echo $the_message;
+			echo 'Hey' $the_message;
 		}
 	?>
 	<form action="uploads.php" enctype="multipart/form-data" method="post">
