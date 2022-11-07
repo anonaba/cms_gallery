@@ -1,7 +1,7 @@
 <?php 
 
 class Database {
-	protected $conn;
+	public $conn;
 
 
     public function __construct() {
@@ -32,5 +32,9 @@ class Database {
 
     public function escape_string($string) {
         return $this->conn->real_escape_string($string);
+    }
+
+    public function the_insert_id() {
+        return $this->conn->insert_id;
     }
 }

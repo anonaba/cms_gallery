@@ -75,7 +75,7 @@ class User {
 		return self::find_this_query('SELECT * FROM users');
 	}
 
-	static public function find_all_user_by_id($id) {
+	static public function find_user_by_id($id) {
 
 		$sql = 'SELECT * FROM users ';
 		$sql .= 'WHERE id = '.self::$db->escape_string($id);
@@ -91,5 +91,53 @@ class User {
 		// $result_set = $result->fetch_assoc();
 		// return $result_set;	
 
+	}
+
+	public function create() {
+		$username 	= self::$db->escape_string($this->username);
+		$password 	= self::$db->escape_string($this->password);
+		$first_name = self::$db->escape_string($this->first_name);
+		$last_name 	= self::$db->escape_string($this->last_name);
+
+		$sql = "INSERT INTO users (`username`, `password`, `first_name`, `last_name`) ";
+		$sql .= "VALUES ('${username}', '${password}','${first_name}','${last_name}') ";
+
+		if(self::$db->query($sql)) {
+			$this->id = self::$db->the_insert_id();
+			return true;
+		} else {
+			return false;
+		}	
+	
+	}
+
+	public function update() {
+		$id 		= self::$db->escape_string($this->id);
+		$username 	= self::$db->escape_string($this->username);
+		$password 	= self::$db->escape_string($this->password);
+		$first_name = self::$db->escape_string($this->first_name);
+		$last_name 	= self::$db->escape_string($this->last_name);
+
+		$sql = "UPDATE users SET ";
+		$sql .= "username = '${username}', password = '${password}', first_name = '${first_name}', last_name =  '${last_name}' ";
+		$sql .= "WHERE id = ${id}";
+
+		self::$db->query($sql);
+
+		return (mysqli_affected_rows(self::$db->conn) === 1) ? true : false;
+
+		// return $sql;
+	
+	}
+
+	public function delete() {
+		$id = self::$db->escape_string($this->id);
+
+		$sql = "DELETE FROM users ";
+		$sql .= "WHERE id = ${id} LIMIT 1";
+
+		self::$db->query($sql);
+
+		return (mysqli_affected_rows(self::$db->conn) === 1) ? true : false;
 	}
 }
