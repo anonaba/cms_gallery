@@ -93,6 +93,11 @@ class User {
 
 	}
 
+	// update if id is set, create if id is not set
+	public function save() {
+		return isset($this->id) ?  $this->update() : $this->create();
+	}
+
 	public function create() {
 		$username 	= self::$db->escape_string($this->username);
 		$password 	= self::$db->escape_string($this->password);
@@ -103,7 +108,7 @@ class User {
 		$sql .= "VALUES ('${username}', '${password}','${first_name}','${last_name}') ";
 
 		if(self::$db->query($sql)) {
-			$this->id = self::$db->the_insert_id();
+			$this->id = self::$db->the_insert_id(); // probably optional
 			return true;
 		} else {
 			return false;
