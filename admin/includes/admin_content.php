@@ -14,26 +14,27 @@
                         //  var_dump($user);
                         // echo '</pre>';
 
-                        // $user = User::find_user_by_id(4);
-                        // $user->last_name = "Donovan";
-                        // $user->update();
+                        // $user = User::find_user_by_id(10);
+                        // $user->username = "spidy";
+                        // $user->save();
+                        // $user = User::find_user_by_id(11);
 
-                        $user = User::find_user_by_id(6);
-
-                        if($user) {
-                            $user->delete();
-                            echo 'Deleted';
-                        } else {
-                            echo "No such users";
-                        }
+                        // if(isset($user->id)) {
+                        //     $user->delete();
+                        //     echo 'Deleted';
+                        // } else {
+                        //     echo "No such users";
+                        // }
                         
-
+                        $user = new User;
+                        $user->username = "What ever";
+                        $user->save();
 
                         // $user = new User;
-                        // $user->username = "mahabaratbu";
-                        // $user->password = "546343";
-                        // $user->first_name = "Dexter";
-                        // $user->last_name = "Mahabaratbu";
+                        // $user->username = "guy";
+                        // $user->password = "45567";
+                        // $user->first_name = "Guy";
+                        // $user->last_name = "Sebastian";
                         // $user->create();
 
                         ?>
