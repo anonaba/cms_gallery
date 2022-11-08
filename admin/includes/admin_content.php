@@ -17,7 +17,7 @@
                         // $user = User::find_user_by_id(10);
                         // $user->username = "spidy";
                         // $user->save();
-                        // $user = User::find_user_by_id(16);
+                        // $user = User::find_user_by_id(14);
 
                         // if(isset($user->id)) {
                         //     $user->delete();
@@ -30,12 +30,23 @@
                             // $user->username = "jay";
                             // $user->save();
 
-                        // $user = new User;
-                        // $user->username = "adan112";
-                        // $user->password = "123456";
-                        // $user->first_name = "Adan";
-                        // $user->last_name = "Molley";
-                        // $user->save();
+                        $user = new User;
+                        // echo '<pre>';
+                        //  var_dump($user->properties());
+                        // echo '</pre>';
+
+                        // $comma_separated =implode("`,`",array_keys($user->properties()));
+                        // $comma_separated = "`".$comma_separated."`";
+                        // echo $comma_separated;
+                        
+                        $user->username = "adan112";
+                        $user->password = "123456";
+                        $user->first_name = "Adan";
+                        $user->last_name = "Molley";
+                        echo $user->create();
+
+
+
 
                         ?>
                         <ol class="breadcrumb">

@@ -57,6 +57,10 @@ class User {
 		return array_key_exists($properties, $object_prop); 
 	}
 
+	public function properties(){
+		return get_object_vars($this); //returns an array of properties of this user class
+	}
+
 	// verify the user when login
 	static public function verify_user($user,$pass) {
 		
@@ -100,13 +104,25 @@ class User {
 	}
 
 	public function create() {
+		$properties = $this->properties();
+
 		$username 	= self::$db->escape_string($this->username);
 		$password 	= self::$db->escape_string($this->password);
 		$first_name = self::$db->escape_string($this->first_name);
 		$last_name 	= self::$db->escape_string($this->last_name);
 
-		$sql = "INSERT INTO ".self::$table_name." (`username`, `password`, `first_name`, `last_name`) ";
-		$sql .= "VALUES ('${username}', '${password}','${first_name}','${last_name}') ";
+		// $sql = "INSERT INTO ".self::$table_name." (`username`, `password`, `first_name`, `last_name`) ";
+		// $sql .= "VALUES ('${username}', '${password}','${first_name}','${last_name}') ";
+
+		$comma_separated = implode("`,`",array_keys($this->properties()));
+        $comma_separated_backtick_qoute = "`".$comma_separated."`";
+
+        $comma_separated_val = implode("','",array_values($this->properties()));
+        
+
+		$sql = "INSERT INTO ".self::$table_name." (${comma_separated_backtick_qoute}) ";
+		$sql .= "VALUES ('${comma_separated_val}') ";
+		
 
 		if(self::$db->query($sql)) {
 			$this->id = self::$db->the_insert_id(); // probably optional
@@ -114,6 +130,7 @@ class User {
 		} else {
 			return false;
 		}	
+		// return $sql;
 	
 	}
 
