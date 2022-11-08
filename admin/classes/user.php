@@ -3,7 +3,8 @@
 class User {
 	static private $db;
 
-	static protected $table_name = "users";
+	static protected $db_table_name = "users";
+	static protected $db_col_name = ['username','password','first_name', 'last_name'];
 	public $id;
 	public $username;
 	public $password;
@@ -58,7 +59,17 @@ class User {
 	}
 
 	public function properties(){
-		return get_object_vars($this); //returns an array of properties of this user class
+		//return get_object_vars($this); //returns an array of properties of this user class
+
+		$properties = [];
+
+		foreach(self::$db_col_name as $prop) {
+			if(property_exists($this, $prop)) {
+				$properties[$prop] = $this->$prop;			
+			} 			
+		}
+
+		return $properties;
 	}
 
 	// verify the user when login
@@ -67,7 +78,7 @@ class User {
 		$username = self::$db->escape_string($user);
 		$password = self::$db->escape_string($pass);
 
-		$sql = "SELECT * FROM ".self::$table_name;
+		$sql = "SELECT * FROM ".self::$db_table_name;
 		$sql .= " WHERE username = '${username}' ";
 		$sql .= "AND password = '${password}' LIMIT 1";
 
@@ -82,7 +93,7 @@ class User {
 
 	static public function find_user_by_id($id) {
 
-		$sql = "SELECT * FROM ".self::$table_name;
+		$sql = "SELECT * FROM ".self::$db_table_name;
 		$sql .= " WHERE id = ".self::$db->escape_string($id);
 		$sql .= " LIMIT 1";
 
@@ -117,12 +128,10 @@ class User {
 		$comma_separated = implode("`,`",array_keys($this->properties()));
         $comma_separated_backtick_qoute = "`".$comma_separated."`";
 
-        $comma_separated_val = implode("','",array_values($this->properties()));
-        
+        $comma_separated_val = implode("','",array_values($this->properties()));        
 
-		$sql = "INSERT INTO ".self::$table_name." (${comma_separated_backtick_qoute}) ";
-		$sql .= "VALUES ('${comma_separated_val}') ";
-		
+		$sql = "INSERT INTO ".self::$db_table_name." (${comma_separated_backtick_qoute}) ";
+		$sql .= "VALUES ('${comma_separated_val}') ";		
 
 		if(self::$db->query($sql)) {
 			$this->id = self::$db->the_insert_id(); // probably optional
@@ -141,7 +150,7 @@ class User {
 		$first_name = self::$db->escape_string($this->first_name);
 		$last_name 	= self::$db->escape_string($this->last_name);
 
-		$sql = "UPDATE ".self::$table_name." SET ";
+		$sql = "UPDATE ".self::$db_table_name." SET ";
 		$sql .= "username = '${username}', password = '${password}', first_name = '${first_name}', last_name =  '${last_name}' ";
 		$sql .= "WHERE id = ${id}";
 
@@ -156,7 +165,7 @@ class User {
 	public function delete() {
 		$id = self::$db->escape_string($this->id);
 
-		$sql = "DELETE FROM ".self::$table_name;
+		$sql = "DELETE FROM ".self::$db_table_name;
 		$sql .= " WHERE id = ${id} LIMIT 1";
 
 		self::$db->query($sql);
