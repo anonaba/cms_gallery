@@ -8,16 +8,16 @@
                             <small>Subheading</small>
                         </h1>
                         <?php 
-                        // $user_found = User::find_all_user_by_id(5);
+                        // $user_found = User::find_user_by_id(1);
                         // echo $user_found->id;
                         //     echo '<pre>';
-                        //  var_dump($user);
+                        //  var_dump($user_found);
                         // echo '</pre>';
 
                         // $user = User::find_user_by_id(10);
                         // $user->username = "spidy";
                         // $user->save();
-                        // $user = User::find_user_by_id(11);
+                        // $user = User::find_user_by_id(16);
 
                         // if(isset($user->id)) {
                         //     $user->delete();
@@ -25,17 +25,17 @@
                         // } else {
                         //     echo "No such users";
                         // }
-                        
-                        $user = new User;
-                        $user->username = "What ever";
-                        $user->save();
+                            // $user = User::find_user_by_id(13);
+
+                            // $user->username = "jay";
+                            // $user->save();
 
                         // $user = new User;
-                        // $user->username = "guy";
-                        // $user->password = "45567";
-                        // $user->first_name = "Guy";
-                        // $user->last_name = "Sebastian";
-                        // $user->create();
+                        // $user->username = "adan112";
+                        // $user->password = "123456";
+                        // $user->first_name = "Adan";
+                        // $user->last_name = "Molley";
+                        // $user->save();
 
                         ?>
                         <ol class="breadcrumb">
