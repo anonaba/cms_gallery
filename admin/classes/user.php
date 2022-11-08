@@ -3,6 +3,7 @@
 class User {
 	static private $db;
 
+	static protected $table_name = "users";
 	public $id;
 	public $username;
 	public $password;
@@ -62,8 +63,8 @@ class User {
 		$username = self::$db->escape_string($user);
 		$password = self::$db->escape_string($pass);
 
-		$sql = "SELECT * FROM users ";
-		$sql .= "WHERE username = '${username}' ";
+		$sql = "SELECT * FROM ".self::$table_name;
+		$sql .= " WHERE username = '${username}' ";
 		$sql .= "AND password = '${password}' LIMIT 1";
 
 		$the_result_array =  self::find_this_query($sql);
@@ -77,9 +78,9 @@ class User {
 
 	static public function find_user_by_id($id) {
 
-		$sql = 'SELECT * FROM users ';
-		$sql .= 'WHERE id = '.self::$db->escape_string($id);
-		$sql .= ' LIMIT 1';
+		$sql = "SELECT * FROM ".self::$table_name;
+		$sql .= " WHERE id = ".self::$db->escape_string($id);
+		$sql .= " LIMIT 1";
 
 		$the_result_array =  self::find_this_query($sql);
 
@@ -104,7 +105,7 @@ class User {
 		$first_name = self::$db->escape_string($this->first_name);
 		$last_name 	= self::$db->escape_string($this->last_name);
 
-		$sql = "INSERT INTO users (`username`, `password`, `first_name`, `last_name`) ";
+		$sql = "INSERT INTO ".self::$table_name." (`username`, `password`, `first_name`, `last_name`) ";
 		$sql .= "VALUES ('${username}', '${password}','${first_name}','${last_name}') ";
 
 		if(self::$db->query($sql)) {
@@ -123,7 +124,7 @@ class User {
 		$first_name = self::$db->escape_string($this->first_name);
 		$last_name 	= self::$db->escape_string($this->last_name);
 
-		$sql = "UPDATE users SET ";
+		$sql = "UPDATE ".self::$table_name." SET ";
 		$sql .= "username = '${username}', password = '${password}', first_name = '${first_name}', last_name =  '${last_name}' ";
 		$sql .= "WHERE id = ${id}";
 
@@ -138,8 +139,8 @@ class User {
 	public function delete() {
 		$id = self::$db->escape_string($this->id);
 
-		$sql = "DELETE FROM users ";
-		$sql .= "WHERE id = ${id} LIMIT 1";
+		$sql = "DELETE FROM ".self::$table_name;
+		$sql .= " WHERE id = ${id} LIMIT 1";
 
 		self::$db->query($sql);
 
