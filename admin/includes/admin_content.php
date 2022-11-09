@@ -35,8 +35,8 @@
                         //     echo $user->username.'<br>';
                         // }
 
-                        $user = User::find_by_id(7);
-                        echo $user->username.'<br>';
+                        // $user = User::find_by_id(2);
+                        // echo $user->username.'<br>';
                         // foreach($users as $user) {
                         //     echo $user->username.'<br>';
                         // }
@@ -45,12 +45,15 @@
                         // $comma_separated = "`".$comma_separated."`";
                         // echo $comma_separated;
                         // $user = User::find_user_by_id(20);
-                        
- //                        $user->username = "noon";
- //                        $user->password = "45464646";
- //                        $user->first_name = "Noon";
- //                        $user->last_name = "Day";
- // echo $user->create();
+                        // $user = new User;
+                        // $user->username = "eve";
+                        // $user->password = "5657547";
+                        // $user->first_name = "Eve";
+                        // $user->last_name = "Day";
+                        // echo $user->save();
+
+                    
+
    ?>
                         <ol class="breadcrumb">
                             <li>
