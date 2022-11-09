@@ -30,21 +30,27 @@
                             // $user->username = "jay";
                             // $user->save();
 
-                        $user = new User;
-                        // echo '<pre>';
-                        //  var_dump($user->properties());
-                        // echo '</pre>';
+                        // $users = User::find_all();
+                        // foreach($users as $user ) {
+                        //     echo $user->username.'<br>';
+                        // }
+
+                        $user = User::find_by_id(7);
+                        echo $user->username.'<br>';
+                        // foreach($users as $user) {
+                        //     echo $user->username.'<br>';
+                        // }
 
                         // $comma_separated =implode("`,`",array_keys($user->properties()));
                         // $comma_separated = "`".$comma_separated."`";
                         // echo $comma_separated;
                         // $user = User::find_user_by_id(20);
                         
-                        $user->username = "today";
-                        $user->password = "345643";
-                        $user->first_name = "Today";
-                        $user->last_name = "Really";
- echo $user->create();
+ //                        $user->username = "noon";
+ //                        $user->password = "45464646";
+ //                        $user->first_name = "Noon";
+ //                        $user->last_name = "Day";
+ // echo $user->create();
    ?>
                         <ol class="breadcrumb">
                             <li>
