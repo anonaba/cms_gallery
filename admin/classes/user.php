@@ -58,7 +58,7 @@ class User {
 		return array_key_exists($properties, $object_prop); 
 	}
 
-	public function properties(){
+	protected function properties(){
 		//return get_object_vars($this); //returns an array of properties of this user class
 
 		$properties = [];
@@ -71,6 +71,20 @@ class User {
 
 		return $properties;
 	}
+
+	protected function clean_properties(){
+
+		$clean_properties = [];
+
+		foreach($this->properties() as $key => $value) {
+			$clean_properties[$key] = self::$db->escape_string($value);
+		}
+
+		return $clean_properties;
+
+	}
+
+
 
 	// verify the user when login
 	static public function verify_user($user,$pass) {
@@ -115,12 +129,11 @@ class User {
 	}
 
 	public function create() {
-		$properties = $this->properties();
-
-		$username 	= self::$db->escape_string($this->username);
-		$password 	= self::$db->escape_string($this->password);
-		$first_name = self::$db->escape_string($this->first_name);
-		$last_name 	= self::$db->escape_string($this->last_name);
+		
+		// $username 	= self::$db->escape_string($this->username);
+		// $password 	= self::$db->escape_string($this->password);
+		// $first_name = self::$db->escape_string($this->first_name);
+		// $last_name 	= self::$db->escape_string($this->last_name);
 
 		// $sql = "INSERT INTO ".self::$table_name." (`username`, `password`, `first_name`, `last_name`) ";
 		// $sql .= "VALUES ('${username}', '${password}','${first_name}','${last_name}') ";
@@ -128,7 +141,8 @@ class User {
 		$comma_separated = implode("`,`",array_keys($this->properties()));
         $comma_separated_backtick_qoute = "`".$comma_separated."`";
 
-        $comma_separated_val = implode("','",array_values($this->properties()));        
+        $comma_separated_val = implode("','",array_values($this->clean_properties()));        
+        // $comma_separated_val = self::$db->escape_string($value);
 
 		$sql = "INSERT INTO ".self::$db_table_name." (${comma_separated_backtick_qoute}) ";
 		$sql .= "VALUES ('${comma_separated_val}') ";		
@@ -139,20 +153,33 @@ class User {
 		} else {
 			return false;
 		}	
-		// return $sql;
+		// return $sql ;
 	
 	}
 
 	public function update() {
 		$id 		= self::$db->escape_string($this->id);
-		$username 	= self::$db->escape_string($this->username);
-		$password 	= self::$db->escape_string($this->password);
-		$first_name = self::$db->escape_string($this->first_name);
-		$last_name 	= self::$db->escape_string($this->last_name);
+		// $username 	= self::$db->escape_string($this->username);
+		// $password 	= self::$db->escape_string($this->password);
+		// $first_name = self::$db->escape_string($this->first_name);
+		// $last_name 	= self::$db->escape_string($this->last_name);
+
+		// $properties = $this->properties();
+		$properties = $this->clean_properties();
+
+		$properties_pairs = [];
+
+		foreach($properties as $key => $value) {
+			$properties_pairs[] = "${key} = '${value}'";
+		}
+
+		// $sql = "UPDATE ".self::$db_table_name." SET ";
+		// $sql .= "username = '${username}', password = '${password}', first_name = '${first_name}', last_name =  '${last_name}' ";
+		// $sql .= "WHERE id = ${id}";
 
 		$sql = "UPDATE ".self::$db_table_name." SET ";
-		$sql .= "username = '${username}', password = '${password}', first_name = '${first_name}', last_name =  '${last_name}' ";
-		$sql .= "WHERE id = ${id}";
+		$sql .= implode(', ', $properties_pairs);
+		$sql .= " WHERE id = ${id}";
 
 		self::$db->query($sql);
 
