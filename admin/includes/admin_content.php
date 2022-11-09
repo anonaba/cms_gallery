@@ -25,7 +25,7 @@
                         // } else {
                         //     echo "No such users";
                         // }
-                            // $user = User::find_user_by_id(13);
+                            // $user = User::find_user_by_id(19);
 
                             // $user->username = "jay";
                             // $user->save();
@@ -38,17 +38,14 @@
                         // $comma_separated =implode("`,`",array_keys($user->properties()));
                         // $comma_separated = "`".$comma_separated."`";
                         // echo $comma_separated;
+                        // $user = User::find_user_by_id(20);
                         
-                        $user->username = "adan112";
-                        $user->password = "123456";
-                        $user->first_name = "Adan";
-                        $user->last_name = "Molley";
-                        echo $user->create();
-                        
-
-
-
-                        ?>
+                        $user->username = "today";
+                        $user->password = "345643";
+                        $user->first_name = "Today";
+                        $user->last_name = "Really";
+ echo $user->create();
+   ?>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
