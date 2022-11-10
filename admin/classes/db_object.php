@@ -4,7 +4,7 @@
 class DB_Object {
 	static protected $db;
 
-	static protected $db_table_name = "";
+	// static protected $db_table_name = "";
 
 	static public function set_database($database) {
      	static::$db = $database;

@@ -13,7 +13,7 @@
                         //     echo '<pre>';
                         //  var_dump($user_found);
                         // echo '</pre>';
-
+ 
                         // $user = User::find_user_by_id(10);
                         // $user->username = "spidy";
                         // $user->save();
@@ -51,6 +51,21 @@
                         // $user->first_name = "Eve";
                         // $user->last_name = "Day";
                         // echo $user->save();
+
+                        //   $photos = Photo::find_all();
+                        //     foreach($photos as $photo ) {
+                        //     echo $photo->filename.'<br>';
+                        // }
+
+                        //  $photo = new Photo;
+                        // $photo->title = "dove profile";
+                        // $photo->description = "Donec tincidunt augue et ullamcorper mattis. Fusce nec mauris ut urna rhoncus tristique. Nam vel leo pulvinar, venenatis sapien at, eleifend nisi.";
+                        // $photo->filename = "dove.jpg";
+                        // $photo->type = "image";
+                        // $photo->size = "446464";
+                        // echo $photo->save();
+
+
 
                     
 
