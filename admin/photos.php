@@ -45,13 +45,8 @@ $photos = Photo::find_all();
                                             <td><?= $photo->photo_id; ?></td>
                                              <td><img src="<?= $photo->picture_path(); ?>" alt="<?= $photo->title; ?>"></td>
                                              <td><?= $photo->title; ?></td> 
-                                            
-                                           
-                                            
                                             <td><?= $photo->filename; ?></td>
                                             <td><?= $photo->size; ?></td>
-                                                                 
-                                            
                                         </tr>
                                    <?php endforeach; ?>                                 
                                </tbody>
