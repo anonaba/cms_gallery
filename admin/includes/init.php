@@ -6,10 +6,20 @@ define("DB_USER", "root");
 define("DB_PASS", "");
 define("DB_NAME", "gallery_db");
 
-
+// C:\xampp\htdocs\cms_gallery
 // echo dirname(__FILE__) . '<br>';
 
 // echo dirname(__DIR__) . '<br>';
+
+$gallery_end = strpos($_SERVER['SCRIPT_NAME'], '/admin');
+$doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $gallery_end);
+
+define("SITE_ROOT", $doc_root);
+
+define('INCLUDES_PATH', SITE_ROOT."/admin/includes");
+
+
+
 
 
 require_once('functions.php');
