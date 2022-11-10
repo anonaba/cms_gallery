@@ -1,4 +1,8 @@
 <?php include("includes/header.php"); ?>
+<?php 
+if(!$session->is_signed_in()) {redirect('login.php');}
+$photos = Photo::find_all();
+?>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -23,14 +27,36 @@
                            Photos
                             <small>Subheading</small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+                       <div class="col-md-12">
+                           <table class="table table-hover">
+                               <thead>
+                                   <tr>
+                                      <th>Id</th>
+                                       <th>Photos</th>
+                                       <th>Title</th>
+                                     
+                                       <th>File Name</th>
+                                       <th>Size</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                    <?php foreach($photos as $photo): ?>  
+                                        <tr>
+                                            <td><?= $photo->photo_id; ?></td>
+                                             <td><img src="<?= $photo->picture_path(); ?>" alt="<?= $photo->title; ?>"></td>
+                                             <td><?= $photo->title; ?></td> 
+                                            
+                                           
+                                            
+                                            <td><?= $photo->filename; ?></td>
+                                            <td><?= $photo->size; ?></td>
+                                                                 
+                                            
+                                        </tr>
+                                   <?php endforeach; ?>                                 
+                               </tbody>
+                           </table>
+                       </div>
                     </div>
                 </div>
                 <!-- /.row -->

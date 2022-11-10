@@ -10,12 +10,13 @@ define("DB_NAME", "gallery_db");
 // echo dirname(__FILE__) . '<br>';
 
 // echo dirname(__DIR__) . '<br>';
+// echo $_SERVER['SCRIPT_NAME'] . '<br>';
 
-$gallery_end = strpos($_SERVER['SCRIPT_NAME'], '/admin');
-$doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $gallery_end);
 
-define("SITE_ROOT", $doc_root);
+// $gallery_end = strpos(dirname(__DIR__),"C", 1) + 353;
+// $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $gallery_end);
 
+define("SITE_ROOT",'C:\xampp\htdocs\cms_gallery');
 define('INCLUDES_PATH', SITE_ROOT."/admin/includes");
 
 
