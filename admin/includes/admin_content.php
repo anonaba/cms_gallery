@@ -17,7 +17,8 @@
                         // $user = User::find_user_by_id(10);
                         // $user->username = "spidy";
                         // $user->save();
-                        // $user = User::find_user_by_id(14);
+                        $photo = Photo::find_by_id(8);
+                        echo $photo;
 
                         // if(isset($user->id)) {
                         //     $user->delete();

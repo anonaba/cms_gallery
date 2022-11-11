@@ -23,7 +23,7 @@ class DB_Object {
 		$the_result_array =  static::find_by_query($sql);
 
 		return !empty($the_result_array) ? array_shift($the_result_array) : false;	
-
+		
 	}
 
 	static public function find_by_query($sql) {
