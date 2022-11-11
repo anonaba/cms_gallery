@@ -4,7 +4,7 @@ class Photo extends DB_Object {
 
 	static protected $db_table_name = "photos";
 	static protected $db_col_name = ['title','description', 'filename', 'type', 'size'];
-	public $photo_id;
+	public $id;
 	public $title;
 	public $description;
 	public $filename;
@@ -47,7 +47,7 @@ class Photo extends DB_Object {
 	}
 
 	public function save() {
-		if($this->photo_id) {
+		if($this->id) {
 			$this->update();
 		} else {
 			//check to see of errors array has value and if there are return false
@@ -63,7 +63,7 @@ class Photo extends DB_Object {
 			$target_path = SITE_ROOT."/admin/".$this->upload_dir."/".$this->filename;
 
 			if(file_exists($target_path)) {
-				$this->errors[] = "The file ${this->filename} already exists";
+				$this->errors[] = "The file ${$this->filename} already exists";
 				return false;
 			}
 
@@ -77,6 +77,15 @@ class Photo extends DB_Object {
 				return false;
 			}
 
+		}
+	}
+
+	public function delete_photo($value='')	{
+		if($this->delete()) {
+			$target_path = SITE_ROOT."/admin/".$this->picture_path();
+			return unlink($target_path) ? true : false;
+		} else {
+			return false;
 		}
 	}
 	
