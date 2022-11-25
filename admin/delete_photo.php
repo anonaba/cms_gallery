@@ -5,7 +5,7 @@ if(!$session->is_signed_in()) {redirect('login.php');}
 
 
 // $id = $_POST['id'] ?? redirect('../photos.php');
-$id = $_GET['id'] ?? redirect('../photos.php');
+$id = $_GET['id'] ?? redirect('photos.php');
 
 
 $photo = Photo::find_by_id($id);

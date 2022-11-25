@@ -44,15 +44,15 @@ $photos = Photo::find_all();
                                         <tr>
                                             <td>
                                                 <img src="<?= $photo->picture_path(); ?>" alt="<?= $photo->title; ?>">
-                                                <div class="pictures_link">
-                                                   <!--  <form method="post" action="delete_photo.php" style="display: inline-block;">
-                                                        <input type="hidden" name="id" value="<?php echo $photo->id ?>">
-                                                        <button type="submit">Delete</button>
-                                                    </form> -->
-                                                    <a href="delete_photo.php/?id=<?php echo $photo->id ?>">Delete</a>
-                                                    <a href="">Edit</a>
-                                                    <a href="">View</a>
-                                                </div>
+                                                    <div class="pictures_link">
+                                                       <!--  <form method="post" action="delete_photo.php" style="display: inline-block;">
+                                                            <input type="hidden" name="id" value="<?php echo $photo->id ?>">
+                                                            <button type="submit">Delete</button>
+                                                        </form> -->
+                                                        <a href="delete_photo.php?id=<?= $photo->id ?>">Delete</a>
+                                                        <a href="edit_photo.php?id=<?= $photo->id ?>">Edit</a>
+                                                        <a href="">View</a>
+                                                    </div>
                                             </td>
                                             <td><?= $photo->id; ?></td>
                                             <td><?= $photo->filename; ?></td>
