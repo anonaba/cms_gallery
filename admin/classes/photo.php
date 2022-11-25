@@ -79,8 +79,8 @@ class Photo extends DB_Object {
 
 		}
 	}
-
-	public function delete_photo($value='')	{
+	//delete the actual image in the system directory "images"
+	public function delete_photo()	{
 		if($this->delete()) {
 			$target_path = SITE_ROOT."/admin/".$this->picture_path();
 			return unlink($target_path) ? true : false;
