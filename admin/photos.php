@@ -43,7 +43,7 @@ $photos = Photo::find_all();
                                     <?php foreach($photos as $photo): ?>  
                                         <tr>
                                             <td>
-                                                <img src="<?= $photo->picture_path(); ?>" alt="<?= $photo->title; ?>">
+                                                <img class="admin-photo-thumbnail" src="<?= $photo->picture_path(); ?>" alt="<?= $photo->title; ?>">
                                                     <div class="pictures_link">
                                                        <!--  <form method="post" action="delete_photo.php" style="display: inline-block;">
                                                             <input type="hidden" name="id" value="<?php echo $photo->id ?>">
