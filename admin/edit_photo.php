@@ -17,6 +17,8 @@ $id = $_GET['id'] ?? null;
              $photo->caption = trim(filter_input(INPUT_POST, 'caption', FILTER_SANITIZE_STRING));
              $photo->alternate_text = trim(filter_input(INPUT_POST, 'alternate_text', FILTER_SANITIZE_STRING));
              $photo->description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING));
+
+             $photo->save();
             }
  
 //     $photo = new Photo;
@@ -67,10 +69,14 @@ $id = $_GET['id'] ?? null;
                         <h1 class="page-header">
                            Edit Photo
                         </h1>
+                         <form action="" method="post" enctype="multipart/form-data">
                         <div class="col-md-8">
-                            <form action="" method="post" enctype="multipart/form-data">
+                           
                                 <div class="form-group">
                                     <input type="text" name="title" class="form-control" value="<?= $photo->title; ?>">
+                                </div>
+                                <div class="form-group">
+                                 <a class="thumbnail" href="#"><img src="<?= $photo->picture_path(); ?>" alt=""></a>
                                 </div>
                                 <div class="form-group">
                                     <label for="caption">Caption</label>
@@ -82,11 +88,9 @@ $id = $_GET['id'] ?? null;
                                 </div>
                                 <div class="form-group">
                                     <label for="caption">Description</label>
-                                        <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
-                                </div>
-                               <button type="submit">Submit</button>
+                                        <textarea class="form-control" name="description" id="mytextarea" cols="30" rows="10"><?= $photo->description; ?></textarea>
 
-                            </form>
+                                </div>                        
                         </div>
                         <div class="col-md-4">
                             <div class="photo-info-box">
@@ -122,6 +126,7 @@ $id = $_GET['id'] ?? null;
                                 </div>
                             </div>
                         </div>
+                    </form>
                    
                     </div>
                 </div>

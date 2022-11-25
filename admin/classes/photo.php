@@ -3,11 +3,13 @@
 class Photo extends DB_Object {
 
 	static protected $db_table_name = "photos";
-	static protected $db_col_name = ['title','description', 'filename', 'type', 'size'];
+	static protected $db_col_name = ['title','caption','description','filename','alternate_text','type','size'];
 	public $id;
 	public $title;
 	public $description;
+	public $caption;
 	public $filename;
+	public $alternate_text;
 	public $type;
 	public $size;
 
