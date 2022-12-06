@@ -136,4 +136,7 @@ class DB_Object {
 
 		return (mysqli_affected_rows(static::$db->conn) === 1) ? true : false;
 	}
+
+
 }
+
