@@ -31,10 +31,9 @@ $photos = Photo::find_all();
                            <table class="table table-hover">
                                <thead>
                                    <tr>
-                                      <th>Id</th>
-                                       <th>Photos</th>
-                                       <th>Title</th>
-                                     
+                                      <th>Photos</th>
+                                      <th>Id</th>                                       
+                                       <th>Title</th>                                     
                                        <th>File Name</th>
                                        <th>Size</th>
                                    </tr>

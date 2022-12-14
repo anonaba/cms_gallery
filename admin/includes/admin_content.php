@@ -17,8 +17,8 @@
                         // $user = User::find_user_by_id(10);
                         // $user->username = "spidy";
                         // $user->save();
-                        $photo = Photo::find_by_id(8);
-                        echo $photo;
+                        // $photo = Photo::find_by_id(8);
+                        // echo $photo;
 
                         // if(isset($user->id)) {
                         //     $user->delete();
@@ -57,14 +57,31 @@
                         //     foreach($photos as $photo ) {
                         //     echo $photo->filename.'<br>';
                         // }
-
-                        //  $photo = new Photo;
-                        // $photo->title = "dove profile";
                         // $photo->description = "Donec tincidunt augue et ullamcorper mattis. Fusce nec mauris ut urna rhoncus tristique. Nam vel leo pulvinar, venenatis sapien at, eleifend nisi.";
                         // $photo->filename = "dove.jpg";
                         // $photo->type = "image";
                         // $photo->size = "446464";
                         // echo $photo->save();
+
+                        // $photo = new Photo;
+
+                        // $photo->title = "Car 1";
+                        //   $photo->description = "Donec tincidunt augue et ullamcorper mattis. Fusce nec mauris ut urna rhoncus tristique. Nam vel leo pulvinar, venenatis sapien at, eleifend nisi.";
+                        // $photo->filename = "dove.jpg";
+                        // $photo->type = "image";
+                        // $photo->size = "446464";
+                        // if($photo->save()) {
+                        // // echo '<pre>';
+                        // //  var_dump($photo);
+                        // // echo '</pre>';
+                        //     echo $photo->save();
+
+                        // } else {
+                        //      $message = join("<br>", $photo->errors);
+                        //      echo $message;
+                        //      echo 'no';
+                        // }
+
 
 
 

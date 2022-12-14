@@ -65,7 +65,7 @@ class Photo extends DB_Object {
 			$target_path = SITE_ROOT."/admin/".$this->upload_dir."/".$this->filename;
 
 			if(file_exists($target_path)) {
-				$this->errors[] = "The file ${$this->filename} already exists";
+				$this->errors[] = "The file ${$this->user_image} already exists";
 				return false;
 			}
 
@@ -76,7 +76,7 @@ class Photo extends DB_Object {
 				}
 			} else {
 				$this->erros[] = "The file directory probably does not have permission";
-				return false;
+					false;
 			}
 
 		}
