@@ -11,6 +11,16 @@ function is_post_request() {
 
 
 function h($string="") {
-  return htmlspecialchars($string);
+  return htmlspecialchars($string, ENT_QUOTES);
 }
+
+
+function u($string="") {
+  return urlencode($string);
+}
+
+function raw_u($string="") {
+  return rawurlencode($string);
+}
+
 

@@ -4,23 +4,23 @@ if(!$session->is_signed_in()) {redirect('login.php');}
 ?>
 
 <?php 
+
+
 if(is_post_request()) {
     $photo = new Photo;
-    $photo->title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
-    $photo->set_file($_FILES['file_upload']);
-    // $image = trim(filter_input(INPUT_POST, 'file_upload', FILTER_SANITIZE_STRING));
-
-
-    // echo $title.'<br>';
-    // echo '<pre>';
-    // var_dump($_FILES['file_upload']);
-    // echo '</pre>';
-
+  if( $photo ) {
+     $photo->title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
+     $photo->set_file($_FILES['file_upload']);
+    // $image = trim(filter_input(INPUT_POST, 'file_upload', FILTER_SANITIZE_STRING));    
+ 
     if($photo->save()) {
         $message = "Photo uploaded succesfully";
     } else {
         $message = join("<br>", $photo->errors);
+
     }
+  }
+   
 } else {
     $message = "";
 }

@@ -7,10 +7,10 @@ if(!$session->is_signed_in()) {redirect('login.php');}
     $user = new User;
     if(is_post_request()) {
         if($user) {
-             $user->username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
-             $user->first_name = trim(filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING));
-             $user->last_name = trim(filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING));
-             $user->password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
+             $user->username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS));
+             $user->first_name = trim(filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS));
+             $user->last_name = trim(filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_SPECIAL_CHARS));
+             $user->password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS));
 
              // saving image to the database
             $user->set_file($_FILES['user_image']);

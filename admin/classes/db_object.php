@@ -96,8 +96,7 @@ class DB_Object {
         // $comma_separated_val = static::$db->escape_string($value);
 
 		$sql = "INSERT INTO ".static::$db_table_name." (${comma_separated_backtick_qoute}) ";
-		$sql .= "VALUES ('${comma_separated_val}') ";		
-
+		$sql .= "VALUES ('${comma_separated_val}') ";
 		if(static::$db->query($sql)) {
 			$this->id = static::$db->the_insert_id(); // probably optional
 			return true;
