@@ -1,7 +1,14 @@
 <?php include("includes/header.php"); ?>
 <?php 
 if(!$session->is_signed_in()) {redirect('login.php');}
-$comments = Comment::find_all();
+
+$id = $_GET['id'] ?? redirect('photos.php');
+
+$comments = Comment::find_the_comments($id);
+
+
+
+
 ?>
 
         <!-- Navigation -->
@@ -26,10 +33,14 @@ $comments = Comment::find_all();
                         <h1 class="page-header">
                            users
                             <small>Subheading</small>
+                            <?php echo $session->message; ?>
                         </h1>
-                        <a href="add_user.php" class="btn btn-primary">Add User</a>
                        <div class="col-md-12">
-                           <table class="table table-hover">
+                        <?php if(empty($comments)) : ?>                           
+                             <p class="lead center">There is no comment yet on this post</p>
+                        <?php else : ?>
+                           
+                             <table class="table table-hover">
                                <thead>
                                    <tr>
                                       <th>Id</th>
@@ -44,7 +55,7 @@ $comments = Comment::find_all();
                                             <td>
                                                 <?= $comment->author; ?>
                                                 <div class="actions_link">
-                                                        <form method="post" action="delete_comment.php" style="display: inline-block;">
+                                                        <form method="post" action="delete_comment_photo.php" style="display: inline-block;">
                                                             <input type="hidden" name="id" value="<?php echo $comment->id ?>">
                                                             <button type="submit">Delete</button>
                                                         </form>
@@ -57,6 +68,8 @@ $comments = Comment::find_all();
                                    <?php endforeach; ?>                                 
                                </tbody>
                            </table>
+                        <?php endif;  ?>
+                           
                        </div>
                     </div>
                 </div>

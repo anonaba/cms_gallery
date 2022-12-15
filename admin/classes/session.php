@@ -4,6 +4,7 @@ class Session {
 
 	private $signed_in = false;
 	public $user_id;
+	public $message;
 
 	public function __construct() {
 		session_start();
@@ -37,4 +38,5 @@ class Session {
 			$this->signed_in = false;
 		}
 	}
+
 }
