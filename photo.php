@@ -1,6 +1,5 @@
 <?php include("includes/header.php"); ?>
 <?php 
-require_once("admin/includes/init.php");
 
 $id = $_GET['id'] ?? redirect('index.php');
 

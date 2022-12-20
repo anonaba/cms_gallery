@@ -59,8 +59,8 @@ $photos = Photo::find_all();
                                             <td><?= $photo->title; ?></td>             
                                             <td><?= $photo->size; ?></td>
                                             <td>
-                                                <?php $comments = Comment::find_the_comments($photo->id); ?>
-                                                <?= count($comments); ?><a href="comment_photo.php?id=<?=$photo->id; ?>">  <?php echo (count($comments) > 1) ? "View Comments" : "View Comment"?></a>
+                                                <?php $comments = Comment::find_the_comments($photo->id); ?> 
+                                                <?= count($comments); ?><br><a href="comment_photo.php?id=<?=$photo->id; ?>">  <?php echo (count($comments) > 1) ? "View Comments" : "View Comment"?></a>
                                             </td>
                                         </tr>
                                    <?php endforeach; ?>                                 

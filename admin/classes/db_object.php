@@ -137,5 +137,15 @@ class DB_Object {
 	}
 
 
+	static public function count_all() {
+
+		$sql = "SELECT COUNT(*) FROM ".static::$db_table_name;
+		$result_set = static::$db->query($sql);
+		$row = mysqli_fetch_array($result_set);
+
+		return array_shift($row);
+	}
+
+
 }
 
