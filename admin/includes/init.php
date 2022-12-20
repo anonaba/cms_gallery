@@ -24,7 +24,6 @@ define("DB_NAME", "gallery");
 // $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $gallery_end);
 
 
-
 define("SITE_ROOT", $_SERVER['DOCUMENT_ROOT']);
 define('INCLUDES_PATH', SITE_ROOT."/admin/includes");
 

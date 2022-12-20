@@ -38,8 +38,7 @@ $comments = Comment::find_the_comments($id);
                        <div class="col-md-12">
                         <?php if(empty($comments)) : ?>                           
                              <p class="lead center">There is no comment yet on this post</p>
-                        <?php else : ?>
-                           
+                        <?php else : ?>                           
                              <table class="table table-hover">
                                <thead>
                                    <tr>
